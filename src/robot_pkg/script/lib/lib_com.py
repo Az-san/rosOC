@@ -56,12 +56,6 @@ class LibCom:
         #==================================================
         # ROSインタフェース
         #==================================================
-        ##2024/10/21 川原 追記
-        #self.dir_list = [2,3,0,2,0]#0:直進、2:右、3:左、進行方向リスト
-        self.dir_list = [2,0,2,0,3]#0:直進、2:右、3:左、進行方向リスト10/29
-        self.dir_num = 0
-        self.act = 0
-        
 
 
         #==================================================
@@ -78,7 +72,7 @@ class LibCom:
     ## @param 
     ## @return
     #==================================================
-    """def initSocket(self):
+    def initSocket(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.bind(("172.17.6.79", 52350))  # 自身のIPアドレスとポート番号を指定
         print("waiting...")
@@ -125,7 +119,7 @@ class LibCom:
             data = recvline
         else:
             print("Socket error!")
-        return data"""
+        return data
 
     #==================================================
     ## @fn com_recv
@@ -207,82 +201,6 @@ class LibCom:
             result = [0,0,1,0]
             
         f.close() 
-        
-        return result
-        
-    #==================================================
-    ## @fn readSocketsDirection
-    ## @brief リスト順に進行   
-    ## @param
-    ## @return
-    ##2024/10/21 川原 追記
-    #==================================================
-    def readSocketsDirection(
-        self,
-        loc,
-        latency = 3
-    ):
-        time.sleep(latency)
-        result = None
-        '''
-        print("opening file...")
-        f = open(loc + '/class.txt','r')
-        data = f.read()
-        print(f"data = {data}")
-        if data == "0":
-            print("command = 0")
-            result = [0,0,0,1]
-                
-        elif data == "1":
-            print("command = 1")
-            result = [0,0,1,0]
-            
-        f.close() 
-        '''
-        num = self.dir_list[self.dir_num]
-        print("dir_num=", num)
-        if num == 0:
-        	result = [1,0,0,0]
-        elif num == 2:
-        	result = [0,0,1,0]
-        elif num == 3:
-        	result = [0,0,0,1]
-        	
-        self.dir_num += 1
-        
-        return result
-        
-     #==================================================
-    ## @fn readSocketsFire
-    ## @brief Websocketsの記録されたtxt読み込み    
-    ## @param
-    ## @return
-    ##2024/10/21 川原 追記
-    #==================================================
-    def readSocketsFire(
-        self,
-        loc,
-        latency = 3
-    ):
-        time.sleep(latency)
-        result = None
-        '''
-        print("opening file...")
-        f = open(loc + '/class.txt','r')
-        data = f.read()
-        print(f"data = {data}")
-        if data == "0":
-            print("command = 0")
-            result = [0,0,0,1]
-                
-        elif data == "1":
-            print("command = 1")
-            result = [0,0,1,0]
-            
-        f.close() 
-        '''
-        self.act += 1
-        result = self.act % 2
         
         return result
     
