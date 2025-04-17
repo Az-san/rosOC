@@ -1,0 +1,7 @@
+image: /home/user/rosOC/src/robot_pkg/data/2024_10_24_16_22_6_0_0_A/map.pgm
+resolution: 0.050000
+origin: [-0.651257, -4.512083, 0.000000]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+

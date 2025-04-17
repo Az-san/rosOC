@@ -1,0 +1,14 @@
+=========================================
+cd rosOC/src/robot_pkg
+bash start_ee_sim.sh
+
+cd rosOC/src/robot_pkg
+bash start_ee_robot.sh
+
+=========================================
+
+cd rosOC/src/robot_pkg
+bash start_ee_sim2.sh
+
+cd rosOC/src/robot_pkg
+bash start_ee_robot2.sh
